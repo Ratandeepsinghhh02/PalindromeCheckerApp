@@ -36,5 +36,6 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("Not a Palindrome");
         }
+        // end of reverse iteration method
     }
 }
