@@ -25,5 +25,16 @@ public class PalindromeCheckerApp {
             System.out.println("Not a Palindrome");
         }
 
+        //iteration from last character to first
+        String reversed = "";
+
+        for(int i=Text.length()-1;i>=0;i--){
+            reversed += Text.charAt(i);
+        }
+        if(Text.equals(reversed)) {
+            System.out.println("It is a Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
     }
 }
