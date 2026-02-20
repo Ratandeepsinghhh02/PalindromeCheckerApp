@@ -2,6 +2,8 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
@@ -84,6 +86,28 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("Not a Palindrome");
         }
+
+
+        //UC6  Queue + Stack Based Palindrome Check
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> Stack = new Stack<>();
+        for (char c : Text.toCharArray()) {
+            queue.add(c);   // enqueue
+            stack.push(c);  // push
+        }
+        isPalindrome = true;
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        if (isPalindrome) {
+            System.out.println("It is a Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
+
 
     }
 }
