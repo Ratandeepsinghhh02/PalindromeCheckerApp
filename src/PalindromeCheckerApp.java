@@ -1,6 +1,7 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.Scanner;
+import java.util.Stack;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
@@ -61,5 +62,28 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("Not a Palindrome");
         }
+
+
+        //uc5 Stack-Based Palindrome Checker
+
+        Stack<Character> stack = new Stack<>();
+        for (char c : Text.toCharArray()) {
+            stack.push(c);
+        }
+        isPalindrome=true;
+
+        for (char c : Text.toCharArray()) {
+            if (c != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        if (isPalindrome) {
+            System.out.println("It is a Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
+
     }
 }
