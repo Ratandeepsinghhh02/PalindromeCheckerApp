@@ -1,11 +1,23 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.*;
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.ArrayDeque;
 import java.util.Deque;
+
+class Node {
+    char data;
+    Node next;
+
+    Node(char data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
 
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
@@ -144,5 +156,67 @@ public class PalindromeCheckerApp {
             System.out.println(input + " is not a Palindrome");
         }
 
+
+
     }
+    public static boolean isPalindrome(Node head) {
+
+        if (head == null || head.next == null)
+            return true;
+
+        Node slow = head;
+        Node fast = head;
+
+        // Find middle using fast and slow pointers
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // Reverse second half
+        Node prev = null;
+        Node curr = slow;
+
+        while (curr != null) {
+            Node nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+
+        // Compare first half and reversed second half
+        Node first = head;
+        Node second = prev;
+
+        while (second != null) {
+            if (first.data != second.data)
+                return false;
+
+            first = first.next;
+            second = second.next;
+        }
+
+        return true;
+    }
+
+    // UC8 Linked List Based Palindrome Checker
+
+    String inputLL = "level";
+
+    // Convert string to linked list
+    Node head = new Node(inputLL.charAt(0));
+    Node current = head;
+
+        for (int i = 1; i < inputLL.length(); i++) {
+        current.next = new Node(inputLL.charAt(i));
+        current = current.next;
+    }
+
+// Check palindrome
+        if (isPalindrome(head)) {
+            System.out.println(inputLL + " is a Palindrome");
+        } else {
+            System.out.println(inputLL + " is not a Palindrome");
+        }
 }
+
