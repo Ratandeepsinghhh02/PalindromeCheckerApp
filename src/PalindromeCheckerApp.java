@@ -242,7 +242,32 @@ public class PalindromeCheckerApp {
     } else {
         System.out.println(input + " is not a Palindrome");
     }
+    String input = "A man a plan a canal Panama";
 
+    // Normalize string: remove spaces and convert to lowercase
+    String normalized = input.replaceAll("\\s+", "").toLowerCase();
+
+    int start = 0;
+    int end = normalized.length() - 1;
+
+    boolean isPalindrome = true;
+
+    // Compare characters
+        while (start < end) {
+        if (normalized.charAt(start) != normalized.charAt(end)) {
+            isPalindrome = false;
+            break;
+        }
+        start++;
+        end--;
+    }
+
+        if (isPalindrome) {
+        System.out.println("\"" + input + "\" is a Palindrome");
+    } else {
+        System.out.println("\"" + input + "\" is not a Palindrome");
+    }
+}
 
 }
 
